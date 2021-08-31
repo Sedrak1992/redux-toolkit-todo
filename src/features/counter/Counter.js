@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addtodo, decrement, increment } from "./counterSlice";
+import { addtodo, decrement,decreTodo } from "./counterSlice";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -16,19 +16,12 @@ export function Counter() {
       alert("g;'ilh");
     }
   };
-  const deleteTodo = (i) => {
-    setInputValue((count) =>
-    count.filter((item, index) => index !== i)
-    );
-  };
+  
   console.log(value);
   return (
     <div>
       <div style={{ marginTop: "50px" }}>
-        <input
-          value={value}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
+        <input value={value} onChange={(e) => setInputValue(e.target.value)} />
         <button aria-label="Increment value" onClick={hendleAddTodo}>
           add....
         </button>
@@ -36,7 +29,7 @@ export function Counter() {
           {count.map((item, i) => (
             <div key={i}>
               {" "}
-              {item} <DeleteIcon onClick={deleteTodo} />
+              {item} <DeleteIcon onClick={() => dispatch(decreTodo(i))  } />
             </div>
           ))}
         </div>
