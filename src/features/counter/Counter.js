@@ -1,34 +1,33 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { addtodo, decrement, increment } from './counterSlice'
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addtodo, decrement, increment } from "./counterSlice";
 
 export function Counter() {
-  const count = useSelector((state) => state.counter.value)
-  const dispatch = useDispatch()
-  console.log(count)
+  const [value, setInputValue] = useState("");
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
+  const hendleAddTodo = () => {
+    dispatch(addtodo(value));
+    setInputValue("");
+    if(value == "") {
+        alert("g;'ilh")
+    }
+  };
+console.log(value);
   return (
     <div>
-      <div>
-        <button
-          aria-label="Increment value"
-          onClick={() => dispatch(addtodo())}
-        >
+      <div style={{marginTop:"50px"}}>
+        <input value={value} onChange={(e) => setInputValue(e.target.value)} />
+        <button aria-label="Increment value" onClick={hendleAddTodo}>
           Increment
         </button>
-        <div style={{border:"1px red solid"}}>
-        {count.map((item, i) => (
-          <div>{item}</div>
-        ))}
-        
+        <div style={{ border: "1px red solid" }}>
+          {count.map((item, i) => (
+            <div key={i}> {item}</div>
+          ))}
         </div>
-        <button
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          Decrement
-        </button>
       </div>
     </div>
-  )
+  );
 }
