@@ -15,7 +15,7 @@ export default function Counter() {
 
   const hendleAddTodo = () => {
     if (value == "") {
-      alert("g;'ilh");
+      alert("no todo......");
     } else {
       dispatch(addtodo(value));
       setInputValue("");
