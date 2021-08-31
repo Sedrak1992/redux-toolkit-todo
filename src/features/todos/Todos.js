@@ -24,7 +24,7 @@ export default function Counter() {
 
   return (
     <div>
-      <div style={{ marginTop: "50px" }}>
+      <div style={{ marginTop: "50px",color:'#fff' }}>
         <Box mb={2}>
           <TextField
             label="add todo...."
